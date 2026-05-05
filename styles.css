@@ -18,15 +18,20 @@ body {
     width: 260px;
     height: 100vh;
     position: absolute;
-    transform: translate(-260px);
+    transform: translateX(-260px);
 }
 
 #toggle-sidebar {
-    background-color: aquamarine;
+    background-color: rgb(38, 70, 78);
+    color: white;
+    font-weight: 400;
     border: none;
     border-radius: 5px;
     padding: 0.3rem 0.5rem;
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
+}
+#sidebar.open {
+    transform: translateX(0);
 }
