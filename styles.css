@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    height: 100vh;
+}
+
+#main {
+    background-color: bisque;
+    flex: 1;
+}
+
+#sidebar {
+    background-color: aqua;
+    width: 260px;
+    height: 100vh;
+    position: absolute;
+    transform: translate(-260px);
+}
+
+#toggle-sidebar {
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+}
