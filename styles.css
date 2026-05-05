@@ -6,20 +6,31 @@
 body {
     display: flex;
     height: 100vh;
+    overflow: hidden;
+
 }
 
 #main {
     background-color: bisque;
     flex: 1;
+    width: 100vw;
+    height: 100vh;
 }
 
 #sidebar {
+    display: flex;
+    flex-direction: column;
     background-color: aqua;
-    width: 260px;
+    width: 360px;
     height: 100vh;
     position: absolute;
     transform: translateX(-260px);
     transition: transform 0.25s ease;
+    height: 100vh;
+}
+
+#sidebar.open {
+    transform: translateX(0);
 }
 
 #toggle-sidebar {
@@ -30,15 +41,51 @@ body {
     border-radius: 5px;
     padding: 0.3rem 0.5rem;
     position: absolute;
-    top: 0.75rem;
+    top: 1.2rem;
     left: 0.75rem;
     transition: transform 0.25s ease;
 }
 
 #toggle-sidebar.on {
-    transform: translateX(11.5rem);
+    transform: translateX(16.5rem);
 }
 
-#sidebar.open {
-    transform: translateX(0);
+.sidebar-header {
+    background-color: red;
+    padding: 0.5rem;
+    margin:0 .5rem;
+    border-bottom: solid black 2px;
 }
+
+#notes-list {
+    flex: 1;
+    background-color: blueviolet;
+    overflow-y: auto;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    margin: 0 .5rem;
+    border-top: solid black 2px;
+    background-color: brown;
+}
+
+#editor {
+    background-color: rgb(144, 144, 255);
+    margin: auto;
+    width: 60%;
+    height: 100%;
+    outline: none;
+    padding: .85rem 1.5rem;
+}
+
+#note-title {
+    background-color: green;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+}
+
+#note-body {
+    background-color: grey;
+}
+
