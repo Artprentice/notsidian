@@ -3,5 +3,6 @@ const sidebar = document.getElementById("sidebar")
 
 sidebarToggle.addEventListener("click", ()=> {
     sidebar.classList.toggle("open")
+    sidebarToggle.classList.toggle("on")
     console.log("clicked")
 })

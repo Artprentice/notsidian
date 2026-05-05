@@ -19,6 +19,7 @@ body {
     height: 100vh;
     position: absolute;
     transform: translateX(-260px);
+    transition: transform 0.25s ease;
 }
 
 #toggle-sidebar {
@@ -31,7 +32,13 @@ body {
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
+    transition: transform 0.25s ease;
 }
+
+#toggle-sidebar.on {
+    transform: translateX(11.5rem);
+}
+
 #sidebar.open {
     transform: translateX(0);
 }
