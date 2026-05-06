@@ -92,9 +92,14 @@ body {
     font-size: 2.5rem;
 }
 
+#note-title:focus, #note-body:focus {
+    outline: none;
+}
+
 #note-body {
     flex: 1;
     background-color: grey;
+    
 
 }
 
