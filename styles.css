@@ -33,6 +33,10 @@ body {
     transform: translateX(0);
 }
 
+#editor.open {
+    transform: translateX(260px);
+}
+
 #toggle-sidebar {
     background-color: rgb(38, 70, 78);
     color: white;
@@ -71,12 +75,15 @@ body {
 }
 
 #editor {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(144, 144, 255);
     margin: auto;
     width: 60%;
     height: 100%;
     outline: none;
     padding: .85rem 1.5rem;
+    transition: transform 0.25s ease;
 }
 
 #note-title {
@@ -86,6 +93,8 @@ body {
 }
 
 #note-body {
+    flex: 1;
     background-color: grey;
+
 }
 
