@@ -4,6 +4,12 @@ const editor = document.getElementById("editor")
 const title = document.getElementById("note-title")
 const body = document.getElementById("note-body")
 
+const savedTitle = localStorage.getItem('notsidian_title')
+const savedBody = localStorage.getItem('notsidian_body')
+
+
+savedTitle ? title.innerText = savedTitle : title.innerText = "yup"
+savedBody ? body.innerText = savedBody : body.innerText = "done"
 
 const range = document.createRange()
 range.selectNodeContents(title)
@@ -25,4 +31,9 @@ sidebarToggle.addEventListener("click", ()=> {
     editor.classList.toggle("open")
     sidebarToggle.classList.toggle("on")
     console.log("clicked")
+})
+
+body.addEventListener("input", () => {
+    localStorage.setItem('notsidian_title', title.innerText)
+    localStorage.setItem('notsidian_body', body.innerText)
 })
