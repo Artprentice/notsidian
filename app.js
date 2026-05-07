@@ -9,10 +9,14 @@ const savedTitle = localStorage.getItem('notsidian_title')
 const savedBody = localStorage.getItem('notsidian_body')
 
 const notes = {}
+let id
+let noteTitle
+let noteBody
+let updated
 
 
-savedTitle ? title.innerText = savedTitle : title.innerText = "yup"
-savedBody ? body.innerText = savedBody : body.innerText = "done"
+savedTitle ? title.innerText = savedTitle : title.innerText = "Untitled"
+savedBody ? body.innerText = savedBody : body.innerText = ""
 
 const range = document.createRange()
 range.selectNodeContents(title)
@@ -29,6 +33,7 @@ title.addEventListener("keydown", (e) => {
     }
 })
 
+
 sidebarToggle.addEventListener("click", () => {
     sidebar.classList.toggle("open")
     editor.classList.toggle("open")
@@ -44,18 +49,18 @@ sidebar.addEventListener("transitionend", () => {
 })
 
 newNote.addEventListener("click", () => {
+    saveNotes()
+    
     title.innerText = "Untitled"
     body.innerText = ""
     sidebar.classList.toggle("open")
     editor.classList.toggle("open")
     sidebar.classList.toggle("on")
     sidebarToggle.classList.toggle("on")
+    renderNotes()
 })
 
-body.addEventListener("input", () => {
-    localStorage.setItem('notsidian_title', title.innerText)
-    localStorage.setItem('notsidian_body', body.innerText)
-})
+
 
 document.addEventListener("click", (e) => {
     if (!sidebar.contains(e.target) && e.target !== sidebarToggle){
@@ -63,3 +68,24 @@ document.addEventListener("click", (e) => {
         editor.classList.remove("open")
     }
 })
+
+
+
+function saveNotes (){
+    id = Date.now()
+    notes[id] = {
+        noteTitle: title.innerText,
+        noteBody: body.innerText,
+        updated: id
+    }
+    localStorage.setItem("notsidian_notes", JSON.stringify(notes))
+}
+
+function renderNotes(){
+    notesList.innerHtml = ""
+    Object.keys(notes).forEach(id => {
+        const div = document.createElement("div")
+        div.innerText = notes[id].title
+        notesList.appendChild(div)
+    })
+}
