@@ -50,6 +50,17 @@ body {
     transition: transform 0.25s ease;
 }
 
+#new-note {
+    background-color: rgb(38, 70, 78);
+    color: white;
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+}
+
 #toggle-sidebar.on {
     transform: translateX(16.5rem);
 }
