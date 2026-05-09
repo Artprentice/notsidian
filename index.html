@@ -7,22 +7,116 @@
     <title>NotSidian</title>
 </head>
 <body>
+
+    <!-- Thin hover strip — desktop only, visible when hover-sidebar mode is on -->
+    <div id="hover-zone" aria-hidden="true"></div>
+
+    <!-- SIDEBAR -->
     <aside id="sidebar">
         <div class="sidebar-header">
             <h1>Not<span>Sidian</span></h1>
-            <button id="new-note"> + </button>
+            <div style="display:flex;align-items:center;gap:0.5rem">
+                <button id="sidebar-close" class="sidebar-close-btn" title="Close">✕</button>
+                <button id="new-note" title="New note">+</button>
+            </div>
         </div>
         <div id="notes-list"></div>
-        <div class="sidebar-footer"></div>
+        <div class="sidebar-footer">
+            <button id="options-btn">options</button>
+        </div>
     </aside>
+
+    <!-- OPTIONS PANEL -->
+    <div id="options-panel" class="hidden">
+        <button id="options-close" class="panel-close" title="Close">✕</button>
+        <button class="option-item" id="save-md">↓ save .md</button>
+        <button class="option-item" id="load-md">↑ load .md</button>
+        <button class="option-item" id="theme-option">◐ theme</button>
+        <!-- Hover sidebar toggle — only rendered on desktop via JS -->
+        <div class="option-item option-toggle" id="hover-toggle-row">
+            <span>open sidebar on hover</span>
+            <button id="hover-toggle" role="switch" aria-checked="false">
+                <span class="toggle-thumb"></span>
+            </button>
+        </div>
+        <input type="file" id="file-input" accept=".md,.txt" style="display:none">
+    </div>
+
+    <!-- THEME PANEL -->
+    <div id="theme-panel" class="hidden">
+        <div class="theme-panel-header">
+            <span>theme</span>
+            <button id="theme-close" class="panel-close" title="Close">✕</button>
+        </div>
+
+        <!-- Default presets -->
+        <p class="theme-section-label">defaults</p>
+        <div class="palette-row" id="default-swatches">
+            <button class="swatch" data-palette="light">
+                <div class="swatch-colors"><span style="background:#f5f2ed"></span><span style="background:#edeae5"></span><span style="background:#1a1a1a"></span><span style="background:#ddd8d0"></span></div>
+                <span class="swatch-label">Light</span>
+            </button>
+            <button class="swatch" data-palette="dark">
+                <div class="swatch-colors"><span style="background:#0e0e0e"></span><span style="background:#111"></span><span style="background:#e8e4dc"></span><span style="background:#2a2a2a"></span></div>
+                <span class="swatch-label">Dark</span>
+            </button>
+            <button class="swatch" data-palette="gruvbox">
+                <div class="swatch-colors"><span style="background:#282828"></span><span style="background:#1d2021"></span><span style="background:#ebdbb2"></span><span style="background:#3c3836"></span></div>
+                <span class="swatch-label">Gruvbox</span>
+            </button>
+            <button class="swatch" data-palette="nord">
+                <div class="swatch-colors"><span style="background:#2e3440"></span><span style="background:#242933"></span><span style="background:#d8dee9"></span><span style="background:#3b4252"></span></div>
+                <span class="swatch-label">Nord</span>
+            </button>
+            <button class="swatch" data-palette="rosepine">
+                <div class="swatch-colors"><span style="background:#191724"></span><span style="background:#1f1d2e"></span><span style="background:#e0def4"></span><span style="background:#26233a"></span></div>
+                <span class="swatch-label">Rosé Pine</span>
+            </button>
+        </div>
+
+        <!-- Custom themes — populated by JS, hidden until at least one exists -->
+        <div id="custom-themes-section" class="hidden">
+            <div class="theme-divider"></div>
+            <p class="theme-section-label">custom</p>
+            <div class="palette-row" id="custom-swatches"></div>
+        </div>
+
+        <!-- Color pickers -->
+        <div class="color-pickers">
+            <label><span>background</span><input type="color" id="pick-bg"></label>
+            <label><span>sidebar</span><input type="color" id="pick-sidebar"></label>
+            <label><span>text</span><input type="color" id="pick-text"></label>
+            <label><span>border</span><input type="color" id="pick-border"></label>
+        </div>
+
+        <button id="save-theme">save as custom theme</button>
+    </div>
+
+    <!-- MAIN -->
     <main id="main">
-        <button id="toggle-sidebar">notes</button>
+        <div id="topbar">
+            <!-- Notes toggle — hidden when hover mode is on -->
+            <button id="toggle-sidebar">notes</button>
+
+            <div class="topbar-right">
+                <!-- Sync indicator -->
+                <div id="sync-indicator" title="Autosave status">
+                    <!-- Idle / saved state -->
+                    <svg id="sync-icon-saved" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    <!-- Typing state — animated dots via CSS -->
+                    <span id="sync-icon-typing" class="sync-dots"><span></span><span></span><span></span></span>
+                </div>
+
+
+            </div>
+        </div>
+
         <div id="editor">
             <div id="note-title" contenteditable="true">Untitled</div>
             <div id="note-body" contenteditable="true"></div>
         </div>
     </main>
-    
+
     <script src="app.js"></script>
 </body>
 </html>
