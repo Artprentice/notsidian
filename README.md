@@ -80,7 +80,7 @@ feel free to improve on it, rebrand and host it.
 
 This project is being built and documented publicly. Every decision, every mistake, every refactor — out in the open.
 
-Built by [\[https://x.com/ManuJr_dev\]](https://x.com/ManuJr_dev) **[@ManuJr_dev](#)** — a developer learning in public, one project at a time.
+Built by [\[https://x.com/ManuJr_dev\]](https://x.com/ManuJr_dev) **[@Artprentice](#)** — a developer learning in public, one project at a time.
 
 ---
 
